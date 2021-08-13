@@ -3,6 +3,14 @@ from pathlib import Path
 from tempfile import NamedTemporaryFile
 from typing import List
 
+import sys
+
+if sys.platform != "darwin" or sys.sys.platform != "win32":
+    import os
+    # soundfileで読み込んでいる libsndfile の検索パスを上書きするために追加している
+    # ref: https://stackoverflow.com/questions/32309693/ctypes-find-library-doesnt-consult-ld-library-path
+    os.environ["LIBRARY_PATH"] = os.environ["LIBRARY_PATH"] + ":" + os.environ["LD_LIBRARY_PATH"]
+
 try:
     import each_cpp_forwarder
 except:
