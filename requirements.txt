@@ -3,6 +3,6 @@ fastapi
 python-multipart
 uvicorn
 aiofiles
-soundfile
+git+https://github.com/yamachu/python-soundfile@57c17abe75a8af4a6426a7126fd6516f4ff67f24
 git+https://github.com/r9y9/pyopenjtalk@59a33c04f81fab636e0f570708efea39bcd6b511
 git+https://github.com/Hiroshiba/python-romkan
