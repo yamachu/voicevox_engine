@@ -281,9 +281,19 @@ jobs:
           key: ${{ steps.zlib-cache-restore.outputs.cache-primary-key }}
           path: download/zlib
 
+      - name: <Debug> Dump CMake version (Before MSVC setup)
+        if: runner.os == 'Windows'
+        continue-on-error: true
+        run: cmake --version
+
       - name: <Setup> Set up MSVC
         if: runner.os == 'Windows'
         uses: ilammy/msvc-dev-cmd@v1
+
+      - name: <Debug> Dump CMake version (After MSVC setup)
+        if: runner.os == 'Windows'
+        continue-on-error: true
+        run: cmake --version
 
       - name: <Setup> Prepare Python Runtime / Python Dependencies
         uses: ./.github/actions/prepare_python
